@@ -8,7 +8,7 @@
 ```bash
 nmp install
 ```
-## Developm<ent server
+##  Server
 
 To start a local development server, run:
 
