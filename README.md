@@ -2,18 +2,20 @@
 
 [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
 
-## Development server
 
-To start a local development server, run:
-Despues de descargar el proyecto ejecuta:
+## Despues de descargar el proyecto ejecuta:
 
 ```bash
 nmp install
 ```
+## Developm<ent server
+
+To start a local development server, run:
 
 ```bash
-ng serve
+ng serve -o
 ```
+
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
