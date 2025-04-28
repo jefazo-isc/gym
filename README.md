@@ -6,7 +6,7 @@
 ## Despues de descargar el proyecto ejecuta:
 
 ```bash
-nmp install
+npm install
 ```
 ##  Server
 
