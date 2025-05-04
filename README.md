@@ -1,21 +1,14 @@
 # Gym
 
-[Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
 
-
-## Despues de descargar el proyecto ejecuta:
-
-```bash
-npm install
-```
-##  Server
+## Development server
 
 To start a local development server, run:
 
 ```bash
-ng serve -o
+ng serve
 ```
-
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
