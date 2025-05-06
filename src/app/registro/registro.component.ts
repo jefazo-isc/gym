@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // 👈 necesario para *ngIf y *ngFor
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-registro',
   standalone: true,
   imports: [
-    CommonModule,         // ✅ Esto es lo que faltaba
+    CommonModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -32,6 +32,16 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
     this.fechaMinima = new Date().toISOString().split('T')[0];
+
+    // Cargar datos desde localStorage si existen
+    const datosGuardados = localStorage.getItem('registroUsuario');
+    if (datosGuardados) {
+      const datos = JSON.parse(datosGuardados);
+      this.nombre = datos.nombre || '';
+      this.genero = datos.genero || '';
+      this.plan = datos.plan || '';
+      this.fecha = datos.fecha || '';
+    }
   }
 
   guardarFormulario(): void {
