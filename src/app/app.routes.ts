@@ -11,6 +11,24 @@ export const routes: Routes = [
     loadComponent: () => import('./components/admin/admin.component').then(m => m.AdminComponent)
   },
   {
+    path: 'planes',
+    loadComponent: () => import('./planes/planes.component').then(m => m.PlanesComponent)
+  },
+  {
+    path: 'registro',
+    loadComponent: () => import('./registro/registro.component').then(m => m.RegistroComponent)
+  },
+  {
+    path: 'rutinas',
+    loadComponent: () => import('./rutinas/rutinas.component').then(m => m.RutinasComponent)
+  }
+,  
+{
+  path: 'conocenos',
+  loadComponent: () => import('./conocenos/conocenos.component').then(m => m.ConocenosComponent)
+}
+,
+  {
     path: 'booking-form',
     loadComponent: () => import('./components/booking-form/booking-form.component').then(m => m.BookingFormComponent)
   },
