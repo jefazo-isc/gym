@@ -6,6 +6,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavComponent } from './nav/nav.component';
+import { CardsPrincipalComponent } from './cards-principal/cards-principal.component';
+import { CarruselPrincipalComponent } from './carrusel-principal/carrusel-principal.component';
+import { UbicacionesPrincipalComponent } from './ubicaciones-principal/ubicaciones-principal.component';
 
 @Component({
   standalone: true,
@@ -18,7 +22,12 @@ import { FooterComponent } from './components/footer/footer.component';
     MatCardModule,
     MatIconModule,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NavComponent,
+    CardsPrincipalComponent,
+    CarruselPrincipalComponent,
+    UbicacionesPrincipalComponent,
+    UbicacionesPrincipalComponent
   ]
 })
 export class AppComponent {
