@@ -27,7 +27,6 @@ import { UbicacionesPrincipalComponent } from './ubicaciones-principal/ubicacion
     CardsPrincipalComponent,
     CarruselPrincipalComponent,
     UbicacionesPrincipalComponent,
-    UbicacionesPrincipalComponent
   ]
 })
 export class AppComponent {
