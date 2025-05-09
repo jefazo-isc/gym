@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="footer">
+  <div class="footer-content">
+    <!-- Sección: Proyecto universitario -->
+    <div class="section university-info">
+      <span class="title">Proyecto universitario</span>
+      <span class="subtitle">Tecnologías Web 2025 - UAA</span>
+    </div>
+
+    <!-- Sección: Redes sociales -->
+    <div class="section social-section">
+      <span class="follow-text">Síguenos:</span>
+      <div class="social-icons">
+        @for (link of socialLinks; track link) {
+          <a [href]="link.url" target="_blank" rel="noopener noreferrer" class="social-icon">
+            <mat-icon>{{ link.icon }}</mat-icon>
+          </a>
+        }
+      </div>
+    </div>
+
+    <!-- Sección: Equipo de desarrollo -->
+    <div class="section team-info">
+      <span class="title">Equipo:</span>
+      <div class="team-members">
+        <span>Yahir Guevara Cardona</span>
+        <span>Ricardo Padilla Hernandez</span>
+        <span>Jaime Alberto Cruz Rodriguez</span>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

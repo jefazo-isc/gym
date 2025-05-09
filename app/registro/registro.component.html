@@ -1,0 +1,42 @@
+<form #formulario="ngForm" (ngSubmit)="guardarFormulario()" class="formulario-registro">
+
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Nombre completo</mat-label>
+      <input matInput [(ngModel)]="nombre" name="nombre" required minlength="3">
+      <mat-error *ngIf="formulario.submitted && (!nombre || nombre.length < 3)">
+        El nombre es obligatorio (mínimo 3 caracteres)
+      </mat-error>
+    </mat-form-field>
+  
+    <label>Género:</label>
+    <mat-radio-group [(ngModel)]="genero" name="genero" required>
+      <mat-radio-button value="Masculino">Masculino</mat-radio-button>
+      <mat-radio-button value="Femenino">Femenino</mat-radio-button>
+    </mat-radio-group>
+    <div class="mat-error" *ngIf="formulario.submitted && !genero">
+      Seleccione un género
+    </div>
+  
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Tipo de plan</mat-label>
+      <mat-select [(ngModel)]="plan" name="plan" required>
+        <mat-option *ngFor="let p of planesDisponibles" [value]="p">{{ p }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="formulario.submitted && !plan">
+        Seleccione un plan
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Fecha de inicio</mat-label>
+      <input matInput type="date" [(ngModel)]="fecha" name="fecha" [min]="fechaMinima" required>
+      <mat-error *ngIf="formulario.submitted && !fecha">
+        Seleccione una fecha válida (hoy o futura)
+      </mat-error>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="!formulario.valid">
+      Enviar
+    </button>
+  </form>
+  
