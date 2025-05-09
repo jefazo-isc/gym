@@ -9,3 +9,9 @@
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+
+.contenedor-vertical {
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna */
+  gap: 20px;
+}

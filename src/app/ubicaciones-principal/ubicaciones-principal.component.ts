@@ -19,7 +19,7 @@ import { fromLonLat } from 'ol/proj';
   styles: [`
     .map-container {
       width: 100%;
-      height: 100vh;
+      height: 50vh;
       position: relative;
     }
     
