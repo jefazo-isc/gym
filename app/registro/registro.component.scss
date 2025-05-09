@@ -1,0 +1,49 @@
+.formulario-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-label {
+    font-weight: 500;
+  }
+  
+  mat-radio-group {
+    display: flex;
+    gap: 2rem;
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  
+  mat-radio-button {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  
+  ::ng-deep mat-radio-button .mat-radio-label-content {
+    color: #212121 !important; /* Texto oscuro */
+    font-weight: 600;
+  }
+  
+  ::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle,
+  ::ng-deep .mat-radio-button.mat-accent .mat-radio-outer-circle {
+    border-color: #212121 !important;
+    background-color: #212121 !important;
+  }
+  
+  button[mat-raised-button] {
+    align-self: center;
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+  }
+  
