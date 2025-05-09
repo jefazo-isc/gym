@@ -1,136 +1,97 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Catálogo Gym - Productos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-
-  <div class="container py-5">
-    <h1 class="text-center mb-5">Productos para Gimnasio</h1>
+<!-- Alerta de promoción -->
+<div class="alert alert-info text-center mt-4" role="alert">
+    🎁 ¡Inscríbete este mes y obtén <strong>1 semana gratis</strong> en el Plan Intermedio!
+  </div>
+  
+  <!-- Planes de gimnasio -->
+  <div class="container my-5">
     <div class="row row-cols-1 row-cols-md-3 g-4">
-
-      <!-- Producto 1 -->
+  
+      <!-- Plan Básico -->
       <div class="col">
-        <div class="card producto-card h-100">
-          <img src="/Gym10.png" class="card-img-top producto-img" alt="Proteína Whey">
+        <div class="card h-100 border-success">
+          <img src="/Gym4.jpg" class="card-img-top" alt="Plan Básico">
           <div class="card-body">
-            <h5 class="card-title">Proteína Whey 2Kg</h5>
-            <p class="categoria">Suplementos</p>
-            <p class="card-text">Alta en proteína, ideal para recuperación muscular y aumento de masa.</p>
-            <p class="fw-bold text-success">$950 MXN</p>
+            <h5 class="card-title text-success text-center">Plan Básico</h5>
+            <ul class="card-text">
+              <li>✅ Acceso de 7am a 2pm</li>
+              <li>✅ 2 clases grupales por semana</li>
+              <li>✅ Evaluación física inicial</li>
+              <li>✅ Lockers básicos</li>
+            </ul>
+            <a routerLink="/registro" class="btn btn-outline-success mt-3 w-100">Elegir Plan</a>
           </div>
         </div>
       </div>
-
-      <!-- Producto 2 -->
+  
+      <!-- Plan Intermedio -->
       <div class="col">
-        <div class="card producto-card h-100">
-          <img src="/Gym11.jpg" class="card-img-top producto-img" alt="Creatina">
+        <div class="card h-100 border-warning position-relative">
+          <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2">Más popular</span>
+          <img src="/Gym5.jpg" class="card-img-top" alt="Plan Intermedio">
           <div class="card-body">
-            <h5 class="card-title">Creatina Monohidrato</h5>
-            <p class="categoria">Suplementos</p>
-            <p class="card-text">Incrementa fuerza y potencia en tus entrenamientos.</p>
-            <p class="fw-bold text-success">$550 MXN</p>
+            <h5 class="card-title text-warning text-center">Plan Intermedio</h5>
+            <ul class="card-text">
+              <li>✅ Acceso de 6am a 10pm</li>
+              <li>✅ 4 clases grupales semanales</li>
+              <li>✅ Rutina personalizada mensual</li>
+              <li>✅ Consulta nutricional al mes</li>
+              <li>✅ Acceso a sauna 1 vez/semana</li>
+            </ul>
+            <a routerLink="/registro" class="btn btn-outline-warning mt-3 w-100">Elegir Plan</a>
           </div>
         </div>
       </div>
-
-      <!-- Producto 3 -->
+  
+      <!-- Plan Avanzado -->
       <div class="col">
-        <div class="card producto-card h-100">
-          <img src="/Gym12.jpg" class="card-img-top producto-img" alt="Guantes">
+        <div class="card h-100 border-danger">
+          <img src="/Gym6.png" class="card-img-top" alt="Plan Avanzado">
           <div class="card-body">
-            <h5 class="card-title">Guantes de Gimnasio</h5>
-            <p class="categoria">Accesorios</p>
-            <p class="card-text">Comodidad y agarre superior para levantar peso.</p>
-            <p class="fw-bold text-success">$320 MXN</p>
+            <h5 class="card-title text-danger text-center">Plan Avanzado</h5>
+            <ul class="card-text">
+              <li>✅ Acceso 24/7</li>
+              <li>✅ Clases ilimitadas</li>
+              <li>✅ Entrenador personal 2x/semana</li>
+              <li>✅ 2 consultas nutricionales al mes</li>
+              <li>✅ Sauna ilimitado + regadera privada</li>
+              <li>✅ 10% en suplementos y ropa</li>
+            </ul>
+            <a routerLink="/registro" class="btn btn-outline-danger mt-3 w-100">Elegir Plan</a>
           </div>
         </div>
       </div>
-
-      <!-- Producto 4 -->
-      <div class="col">
-        <div class="card producto-card h-100">
-          <img src="/Gym13.jpg" class="card-img-top producto-img" alt="BCAA">
-          <div class="card-body">
-            <h5 class="card-title">BCAA 5000mg</h5>
-            <p class="categoria">Suplementos</p>
-            <p class="card-text">Aminoácidos esenciales para evitar catabolismo muscular.</p>
-            <p class="fw-bold text-success">$430 MXN</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Producto 5 -->
-      <div class="col">
-        <div class="card producto-card h-100">
-          <img src="https://via.placeholder.com/400x200?text=Cinturón+de+Levantamiento" class="card-img-top producto-img" alt="Cinturón">
-          <div class="card-body">
-            <h5 class="card-title">Cinturón de Levantamiento</h5>
-            <p class="categoria">Accesorios</p>
-            <p class="card-text">Soporte lumbar para ejercicios pesados como sentadilla o peso muerto.</p>
-            <p class="fw-bold text-success">$490 MXN</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Producto 6 -->
-      <div class="col">
-        <div class="card producto-card h-100">
-          <img src="https://via.placeholder.com/400x200?text=Proteína+Vegetal" class="card-img-top producto-img" alt="Proteína vegetal">
-          <div class="card-body">
-            <h5 class="card-title">Proteína Vegetal</h5>
-            <p class="categoria">Suplementos</p>
-            <p class="card-text">Ideal para dietas veganas, rica en aminoácidos esenciales.</p>
-            <p class="fw-bold text-success">$780 MXN</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Producto 7 -->
-      <div class="col">
-        <div class="card producto-card h-100">
-          <img src="https://via.placeholder.com/400x200?text=Shaker+600ml" class="card-img-top producto-img" alt="Shaker">
-          <div class="card-body">
-            <h5 class="card-title">Shaker 600ml</h5>
-            <p class="categoria">Accesorios</p>
-            <p class="card-text">Mezclador portátil para tus suplementos en polvo.</p>
-            <p class="fw-bold text-success">$150 MXN</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Producto 8 -->
-      <div class="col">
-        <div class="card producto-card h-100">
-          <img src="https://via.placeholder.com/400x200?text=Óxido+Nítrico" class="card-img-top producto-img" alt="Preentreno">
-          <div class="card-body">
-            <h5 class="card-title">Preentreno Óxido Nítrico</h5>
-            <p class="categoria">Suplementos</p>
-            <p class="card-text">Mayor bombeo y energía en tu rutina diaria.</p>
-            <p class="fw-bold text-success">$620 MXN</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Producto 9 -->
-      <div class="col">
-        <div class="card producto-card h-100">
-          <img src="https://via.placeholder.com/400x200?text=Rodilleras+Crossfit" class="card-img-top producto-img" alt="Rodilleras">
-          <div class="card-body">
-            <h5 class="card-title">Rodilleras Crossfit</h5>
-            <p class="categoria">Accesorios</p>
-            <p class="card-text">Protección articular en ejercicios de alto impacto.</p>
-            <p class="fw-bold text-success">$380 MXN</p>
-          </div>
-        </div>
-      </div>
-
+  
     </div>
   </div>
-
-</body>
-</html>
+  
+  <!-- Testimonios -->
+  <div class="container my-5">
+    <h3 class="text-center mb-4">Lo que opinan nuestros clientes</h3>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+  
+      <div class="col">
+        <div class="card h-100 border-success">
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>"Con el plan intermedio volví a hacer ejercicio y me siento con más energía."</p>
+              <footer class="blockquote-footer mt-2">Paola G., 29 años</footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col">
+        <div class="card h-100 border-danger">
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>"El plan avanzado es excelente si entrenas en serio. Los coaches y equipo son top."</p>
+              <footer class="blockquote-footer mt-2">Carlos M., 34 años</footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
