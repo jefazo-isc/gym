@@ -1,63 +1,47 @@
-// src/app/components/login/login.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
+  selector: 'app-login',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  template: `
-    <div class="login-container">
-      <h2>Login Administrador</h2>
-      <input 
-        [(ngModel)]="username" 
-        placeholder="Nombre de usuario"
-        class="form-control"
-      >
-      <input 
-        type="password" 
-        [(ngModel)]="password" 
-        placeholder="Contraseña"
-        class="form-control"
-      >
-      <button (click)="login()" class="btn btn-primary">Ingresar</button>
-    </div>
-  `,
-  styles: [
-    `
-    .login-container {
-      max-width: 400px;
-      margin: 2rem auto;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-    }
-    .form-control {
-      margin: 10px 0;
-      width: 100%;
-    }
-    `
-  ]
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
+
+  admins = [
+    { username: 'admin1', password: '1234', nombre: 'Juan Pérez' },
+    { username: 'admin2', password: 'abcd', nombre: 'María López' },
+    { username: 'admin3', password: 'adminpass', nombre: 'Carlos Ruiz' }
+  ];
 
   login() {
-    const admin = this.authService.validateUser(this.username, this.password);
-    if (admin) {
-      localStorage.setItem('currentAdmin', JSON.stringify(admin));
-      this.router.navigate(['/admin']);
-    } else {
+    const admin = this.admins.find(
+      user => user.username === this.username && user.password === this.password
+    );
+
+    if (!admin) {
       Swal.fire('Error', 'Credenciales incorrectas', 'error');
+    } else {
+      Swal.fire({
+        title: `Bienvenido, ${admin.nombre}`,
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false
+      }).then(() => {
+        // ✅ Guardar el admin en localStorage
+        localStorage.setItem('currentAdmin', JSON.stringify(admin));
+        // ✅ Redirigir a la vista de administración
+        this.router.navigate(['/admin']);
+      });
     }
   }
 }

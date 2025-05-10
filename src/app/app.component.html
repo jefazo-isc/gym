@@ -1,19 +1,9 @@
+<!-- app.component.html -->
 <app-header></app-header>
 
 <main class="main-content">
   <div class="content-container">
-    @if (currentAdmin) {
-      <mat-card class="welcome-card">
-        <mat-card-header>
-          <div mat-card-avatar>
-            <mat-icon>fitness_center</mat-icon>
-          </div>
-          <mat-card-title>Bienvenido, {{ currentAdmin.nombre }}</mat-card-title>
-          <mat-card-subtitle>Panel de Control PowerGym</mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
-    }
-
+    <!-- Solo se queda el router outlet -->
     <router-outlet></router-outlet>
   </div>
 </main>

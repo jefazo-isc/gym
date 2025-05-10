@@ -1,0 +1,45 @@
+<div class="comentarios-container">
+  <h3 class="mb-4 text-center">📢 Deja tu comentario</h3>
+
+  <form [formGroup]="form" (ngSubmit)="enviarComentario()">
+    <mat-form-field appearance="fill" class="w-100 mb-3">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+      <mat-error *ngIf="f['nombre'].touched && f['nombre'].invalid">
+        Ingrese un nombre (mínimo 3 letras)
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100 mb-3">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="f['email'].touched && f['email'].invalid">
+        Ingrese un email válido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100 mb-3">
+      <mat-label>Asunto</mat-label>
+      <mat-select formControlName="asunto">
+        <mat-option *ngFor="let a of asuntos" [value]="a">{{ a }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="f['asunto'].touched && f['asunto'].invalid">
+        Seleccione un asunto
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100 mb-4">
+      <mat-label>Comentario</mat-label>
+      <textarea matInput rows="4" formControlName="comentario"></textarea>
+      <mat-error *ngIf="f['comentario'].touched && f['comentario'].invalid">
+        El comentario debe tener al menos 10 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <div class="d-flex justify-content-center">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Enviar comentario
+      </button>
+    </div>
+  </form>
+</div>
