@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{Hb as n,Ib as i,Yb as s,jb as e}from"./chunk-WYIAL2QE.mjs";import"./chunk-S6KH3LOX.mjs";var p=class t{static \u0275fac=function(o){return new(o||t)};static \u0275cmp=e({type:t,selectors:[["app-subscription-form"]],decls:2,vars:0,template:function(o,m){o&1&&(n(0,"p"),s(1,"subscription-form works!"),i())},encapsulation:2})};export{p as SubscriptionFormComponent};
