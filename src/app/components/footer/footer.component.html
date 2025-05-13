@@ -1,0 +1,50 @@
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3 class="footer-title">Contacto</h3>
+      <div class="contact-info">
+        <div class="contact-item">
+          <mat-icon>email</mat-icon>
+          <span>{{ contactInfo.email }}</span>
+        </div>
+        <div class="contact-item">
+          <mat-icon>phone</mat-icon>
+          <span>{{ contactInfo.phone }}</span>
+        </div>
+        <div class="contact-item">
+          <mat-icon>location_on</mat-icon>
+          <span>{{ contactInfo.address }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h3 class="footer-title">Legal</h3>
+      <div class="legal-links">
+        <a mat-button color="primary">Política de Privacidad</a>
+        <a mat-button color="primary">Términos y Condiciones</a>
+        <a mat-button color="primary">Aviso Legal</a>
+      </div>
+    </div>
+
+    <div class="footer-section social-section">
+      <h3 class="footer-title">Síguenos</h3>
+      <div class="social-icons">
+        @for (social of socialMedia; track social.name) {
+	<a 
+	            mat-icon-button 
+	            [href]="social.url" 
+	            target="_blank"
+	            [attr.aria-label]="social.name"
+	            class="social-button">
+	            <mat-icon>{{ social.icon }}</mat-icon>
+	          </a>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>© 2025 SaiyaGym. Todos los derechos reservados</p>
+  </div>
+</footer>

@@ -1,0 +1,17 @@
+{
+  "routes": {
+    "/gym": {},
+    "/gym/admin": {},
+    "/gym/booking-form": {},
+    "/gym/classes": {},
+    "/gym/conocenos": {},
+    "/gym/footer": {},
+    "/gym/header": {},
+    "/gym/home": {},
+    "/gym/login": {},
+    "/gym/planes": {},
+    "/gym/registro": {},
+    "/gym/rutinas": {},
+    "/gym/subscription-form": {}
+  }
+}

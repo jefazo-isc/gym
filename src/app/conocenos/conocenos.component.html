@@ -1,0 +1,40 @@
+<section class="conocenos-section">
+  <mat-grid-list [cols]="cols" [rowHeight]="rowHeight" gutterSize="20px">
+    @for (member of teamMembers; track $index) {
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-header>
+          <img 
+              mat-card-avatar 
+              [alt]="'Avatar de ' + member.name"
+              [ngSrc]="member.avatar"
+              width="120" 
+              height="120"
+              priority
+            >
+            <div class="header-text">
+              <mat-card-title>{{ member.name }}</mat-card-title>
+              <mat-card-subtitle>{{ member.role }}</mat-card-subtitle>
+            </div>
+          </mat-card-header>
+          
+          <mat-card-content>
+            <p>{{ member.bio }}</p>
+          </mat-card-content>
+          
+          <mat-card-actions>
+            <button 
+              mat-button 
+              color="primary" 
+              (click)="openWhatsApp(member.whatsapp)"
+              [attr.aria-label]="'Contactar a ' + member.name + ' por WhatsApp'"
+            >
+              <img src="w.png" alt="WhatsApp" class="whatsapp-icon">
+              WhatsApp
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    }
+  </mat-grid-list>
+</section>
