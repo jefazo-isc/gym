@@ -1,0 +1,1 @@
+import{Ib as t,Jb as i,Zb as m,mb as n}from"./chunk-E2VRYHBW.js";var p=class e{static \u0275fac=function(o){return new(o||e)};static \u0275cmp=n({type:e,selectors:[["app-booking-form"]],decls:2,vars:0,template:function(o,s){o&1&&(t(0,"p"),m(1,"booking-form works!"),i())},encapsulation:2})};export{p as BookingFormComponent};
