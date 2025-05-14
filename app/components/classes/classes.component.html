@@ -1,1 +1,40 @@
-<p>classes works!</p>
+@if (!id) {
+  <div class="container mt-4">
+    <h2 class="text-center mb-4 text-primary">Clases disponibles</h2>
+    <ul class="list-group">
+      @for (clase of clases; track clase) {
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span>
+            <strong>{{ clase.nombre }}</strong> — {{ clase.instructor }}
+          </span>
+          <a class="btn btn-sm btn-outline-primary" [routerLink]="['/classes', clase.id]">Ver detalle</a>
+        </li>
+      }
+    </ul>
+  </div>
+}
+
+@if (id && clase) {
+  <div class="container mt-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title text-success">Detalles de Clase: {{ clase.nombre }}</h3>
+        <p class="card-text"><strong>Instructor:</strong> {{ clase.instructor }}</p>
+        <p class="card-text"><strong>Horario:</strong> {{ clase.horario }}</p>
+        <p class="card-text"><strong>Descripción:</strong> {{ clase.descripcion }}</p>
+        <a routerLink="/classes" class="btn btn-outline-secondary mt-3">Volver al listado</a>
+      </div>
+    </div>
+  </div>
+}
+
+@if (id && !clase) {
+  <div class="container mt-4">
+    <div class="alert alert-danger text-center">
+      <strong>Clase no encontrada.</strong>
+    </div>
+    <div class="text-center">
+      <a routerLink="/classes" class="btn btn-outline-dark">Volver</a>
+    </div>
+  </div>
+}

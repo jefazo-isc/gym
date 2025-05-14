@@ -1,1 +1,28 @@
-<p>cards-principal works!</p>
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    @for (card of cards; track card.id) {
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+          <img [src]="card.image" class="card-img-top" alt="{{ card.title }}">
+          <div class="card-body">
+            <h5 class="card-title text-center fw-bold">{{ card.title }}</h5>
+            <ul class="list-group list-group-flush">
+              @for (point of card.points; track point) {
+                <li class="list-group-item">{{ point }}</li>
+              }
+            </ul>
+            <div class="d-grid gap-2 mt-3">
+              <a [routerLink]="['/rutina', card.id]" class="btn btn-primary">
+                Ver más
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <div class="col-12">
+        <p class="text-center">No hay tarjetas disponibles.</p>
+      </div>
+    }
+  </div>
+</div>

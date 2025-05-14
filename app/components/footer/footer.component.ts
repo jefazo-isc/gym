@@ -1,24 +1,32 @@
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+interface SocialMedia {
+  name: string;
+  icon: string;
+  url: string;
+}
 
 @Component({
-  standalone: true,
   selector: 'app-footer',
+  standalone: true,
+  imports: [CommonModule, MatIconModule, MatButtonModule],
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatIconModule
-  ]
+  styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  // Redes sociales (enlaces funcionales)
-  socialLinks = [
-    { icon: 'facebook', url: 'https://facebook.com' },
-    { icon: 'reddit', url: 'https://reddit.com' },
-    { icon: 'telegram', url: 'https://telegram.com' },
-  ];
+socialMedia: SocialMedia[] = [
+  { name: 'Reddit', icon: 'reddit', url: 'https://www.reddit.com/' },
+  { name: 'Telegram', icon: 'send', url: 'https://t.me/usuario' },
+  { name: 'Facebook', icon: 'facebook', url: 'https://facebook.com/usuario' }
+];
+
+
+  contactInfo = {
+    email: 'contacto@gymforce.com',
+    phone: '+34 900 555 555',
+    address: 'Calle Fitness, 123 - Madrid'
+  };
 }

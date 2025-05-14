@@ -1,4 +1,3 @@
-// app.routes.ts
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -21,19 +20,21 @@ export const routes: Routes = [
   {
     path: 'rutinas',
     loadComponent: () => import('./rutinas/rutinas.component').then(m => m.RutinasComponent)
-  }
-,  
-{
-  path: 'conocenos',
-  loadComponent: () => import('./conocenos/conocenos.component').then(m => m.ConocenosComponent)
-}
-,
+  },
+  {
+    path: 'conocenos',
+    loadComponent: () => import('./conocenos/conocenos.component').then(m => m.ConocenosComponent)
+  },
   {
     path: 'booking-form',
     loadComponent: () => import('./components/booking-form/booking-form.component').then(m => m.BookingFormComponent)
   },
   {
     path: 'classes',
+    loadComponent: () => import('./components/classes/classes.component').then(m => m.ClassesComponent)
+  },
+  {
+    path: 'classes/:id', // ✅ Ruta con parámetro
     loadComponent: () => import('./components/classes/classes.component').then(m => m.ClassesComponent)
   },
   {

@@ -1,4 +1,3 @@
-// app.component.ts
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -9,7 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { CardsPrincipalComponent } from './cards-principal/cards-principal.component';
 import { CarruselPrincipalComponent } from './carrusel-principal/carrusel-principal.component';
-import { UbicacionesPrincipalComponent } from './ubicaciones-principal/ubicaciones-principal.component';
+import { AsideComponent } from './aside/aside.component';
 
 @Component({
   standalone: true,
@@ -26,18 +25,26 @@ import { UbicacionesPrincipalComponent } from './ubicaciones-principal/ubicacion
     NavComponent,
     CardsPrincipalComponent,
     CarruselPrincipalComponent,
-    UbicacionesPrincipalComponent,
-    UbicacionesPrincipalComponent
+    AsideComponent
   ]
 })
 export class AppComponent {
   currentAdmin: any;
-
+ isAsideVisible = true; 
   constructor(@Inject(PLATFORM_ID) private platformId: any) {
-    // Acceder a localStorage solo en el navegador
     if (isPlatformBrowser(this.platformId)) {
       const adminData = localStorage.getItem('currentAdmin');
       this.currentAdmin = adminData ? JSON.parse(adminData) : null;
     }
   }
+
+  onAsideToggle(isVisible: boolean) {
+    this.isAsideVisible = isVisible;
+  }
+
+
+  toggleAside() {
+    this.isAsideVisible = !this.isAsideVisible;
+  }
+  
 }

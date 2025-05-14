@@ -1,31 +1,50 @@
-<mat-toolbar color="primary" class="footer">
-  <div class="footer-content">
-    <!-- Sección: Proyecto universitario -->
-    <div class="section university-info">
-      <span class="title">Proyecto universitario</span>
-      <span class="subtitle">Tecnologías Web 2025 - UAA</span>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3 class="footer-title">Contacto</h3>
+      <div class="contact-info">
+        <div class="contact-item">
+          <mat-icon>email</mat-icon>
+          <span>{{ contactInfo.email }}</span>
+        </div>
+        <div class="contact-item">
+          <mat-icon>phone</mat-icon>
+          <span>{{ contactInfo.phone }}</span>
+        </div>
+        <div class="contact-item">
+          <mat-icon>location_on</mat-icon>
+          <span>{{ contactInfo.address }}</span>
+        </div>
+      </div>
     </div>
 
-    <!-- Sección: Redes sociales -->
-    <div class="section social-section">
-      <span class="follow-text">Síguenos:</span>
+    <div class="footer-section">
+      <h3 class="footer-title">Legal</h3>
+      <div class="legal-links">
+        <a mat-button color="primary">Política de Privacidad</a>
+        <a mat-button color="primary">Términos y Condiciones</a>
+        <a mat-button color="primary">Aviso Legal</a>
+      </div>
+    </div>
+
+    <div class="footer-section social-section">
+      <h3 class="footer-title">Síguenos</h3>
       <div class="social-icons">
-        @for (link of socialLinks; track link) {
-          <a [href]="link.url" target="_blank" rel="noopener noreferrer" class="social-icon">
-            <mat-icon>{{ link.icon }}</mat-icon>
-          </a>
+        @for (social of socialMedia; track social.name) {
+	<a 
+	            mat-icon-button 
+	            [href]="social.url" 
+	            target="_blank"
+	            [attr.aria-label]="social.name"
+	            class="social-button">
+	            <mat-icon>{{ social.icon }}</mat-icon>
+	          </a>
         }
       </div>
     </div>
-
-    <!-- Sección: Equipo de desarrollo -->
-    <div class="section team-info">
-      <span class="title">Equipo:</span>
-      <div class="team-members">
-        <span>Yahir Guevara Cardona</span>
-        <span>Ricardo Padilla Hernandez</span>
-        <span>Jaime Alberto Cruz Rodriguez</span>
-      </div>
-    </div>
   </div>
-</mat-toolbar>
+
+  <div class="copyright">
+    <p>© 2025 SaiyaGym. Todos los derechos reservados</p>
+  </div>
+</footer>

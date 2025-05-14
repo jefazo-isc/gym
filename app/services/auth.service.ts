@@ -1,18 +1,52 @@
-// services/auth.service.ts
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
-@Injectable({
-  providedIn: 'root'
-})
+interface CurrentUser {
+  nombre: string;
+  email: string;
+  token?: string;
+}
+
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-  adminAccounts = [
-    { username: 'admin1', password: '1234', nombre: 'Ana Pérez' },
-    { username: 'admin2', password: '5678', nombre: 'Carlos Gómez' }
-  ];
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  validateUser(username: string, password: string) {
-    return this.adminAccounts.find(acc => 
-      acc.username === username && acc.password === password
-    );
+  login(credentials: { email: string; password: string }): boolean {
+    if (isPlatformBrowser(this.platformId)) {
+      // Simula un token devuelto por el backend
+      const fakeToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9…';
+      const user: CurrentUser = {
+        nombre: 'Admin',
+        email: credentials.email,
+        token: fakeToken
+      };
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      return true;
+    }
+    return false;
+  }
+
+  logout(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('currentUser');
+    }
+  }
+
+  isAuthenticated(): boolean {
+    if (isPlatformBrowser(this.platformId)) {
+      return !!localStorage.getItem('currentUser');
+    }
+    return false;
+  }
+
+  /** Nuevo método para el interceptor */
+  getToken(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      const raw = localStorage.getItem('currentUser');
+      if (!raw) return null;
+      const user: CurrentUser = JSON.parse(raw);
+      return user.token || null;
+    }
+    return null;
   }
 }

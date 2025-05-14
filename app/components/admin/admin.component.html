@@ -1,1 +1,103 @@
-<p>admin works!</p>
+<div class="container my-4">
+
+  @if (adminName) {
+    <mat-card class="welcome-card mb-3">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>fitness_center</mat-icon>
+        </div>
+        <!-- 🔹 Interpolación -->
+        <mat-card-title>Bienvenido, {{ adminName }}</mat-card-title>
+        <mat-card-subtitle>Panel de Control PowerGym</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  }
+
+  @if (adminName) {
+    <div class="d-flex justify-content-end mb-3">
+      <!-- 🔹 Event Binding -->
+      <button class="btn btn-danger btn-sm" (click)="logout()">Cerrar sesión</button>
+    </div>
+  }
+
+  <hr>
+
+  <h5 class="text-primary">Registros de Usuarios (Formulario Template)</h5>
+  @if (registrosTemplate.length) {
+    <div>
+      @for (reg of registrosTemplate; track reg; let i = $index) {
+        <div class="card p-3 mb-2 shadow-sm">
+          @if (registroEditandoIndex !== i) {
+            <div>
+              <p><strong>Nombre:</strong> {{ reg.data.nombre }}</p>
+              <p><strong>Género:</strong> {{ reg.data.genero }}</p>
+              <p><strong>Plan:</strong> {{ reg.data.plan }}</p>
+              <p><strong>Fecha:</strong> {{ reg.data.fecha }}</p>
+
+              <button class="btn btn-primary btn-sm me-2" (click)="editarRegistroTemplate(i)">Editar</button>
+              <button class="btn btn-danger btn-sm" (click)="eliminarRegistroTemplate(i)">Eliminar</button>
+            </div>
+          }
+
+          @if (registroEditandoIndex === i) {
+            <div>
+              <!-- 🔹 Two-Way Binding -->
+              <input class="form-control mb-2" [(ngModel)]="registroEditando.nombre" placeholder="Nombre">
+              <input class="form-control mb-2" [(ngModel)]="registroEditando.genero" placeholder="Género">
+              <input class="form-control mb-2" [(ngModel)]="registroEditando.plan" placeholder="Plan">
+              <input type="date" class="form-control mb-2" [(ngModel)]="registroEditando.fecha">
+              <button class="btn btn-success btn-sm me-2" (click)="guardarEdicionTemplate()">Guardar</button>
+              <button class="btn btn-secondary btn-sm" (click)="cancelarEdicionTemplate()">Cancelar</button>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  } @else {
+    <p class="text-muted">No hay datos por template.</p>
+  }
+
+  <hr>
+
+  <h5 class="text-primary">Comentarios de Usuarios (Formulario Reactivo)</h5>
+  @if (registrosReactivo.length) {
+    <div>
+      @for (c of registrosReactivo; track c; let i = $index) {
+        <div class="card p-3 mb-2 shadow-sm">
+          @if (comentarioEditandoIndex !== i) {
+            <div>
+              <p><strong>Nombre:</strong> {{ c.data.nombre }}</p>
+              <p><strong>Email:</strong> {{ c.data.email }}</p>
+              <p><strong>Asunto:</strong> {{ c.data.asunto }}</p>
+              <p><strong>Comentario:</strong> {{ c.data.comentario }}</p>
+              <button class="btn btn-primary btn-sm me-2" (click)="editarRegistroReactivo(i)">Editar</button>
+              <button class="btn btn-danger btn-sm" (click)="eliminarRegistroReactivo(i)">Eliminar</button>
+            </div>
+          }
+
+          @if (comentarioEditandoIndex === i) {
+            <form [formGroup]="formComentario" (ngSubmit)="guardarEdicionReactivo()">
+              <input formControlName="nombre" class="form-control mb-2" placeholder="Nombre">
+              <input formControlName="email" class="form-control mb-2" placeholder="Email">
+
+              <!-- 🔹 Property Binding -->
+              <select formControlName="asunto" class="form-select mb-2">
+                @for (a of asuntos; track a) {
+                  <option [value]="a">{{ a }}</option> <!-- Interpolación + Property Binding -->
+                }
+              </select>
+
+              <textarea formControlName="comentario" class="form-control mb-2" rows="3" placeholder="Comentario"></textarea>
+
+              <button class="btn btn-success btn-sm me-2" type="submit">Guardar</button>
+              <button class="btn btn-secondary btn-sm" type="button" (click)="cancelarEdicionReactivo()">Cancelar</button>
+            </form>
+          }
+        </div>
+      }
+    </div>
+  } @else {
+    <p class="text-muted">No hay datos reactivos.</p>
+  }
+
+</div>

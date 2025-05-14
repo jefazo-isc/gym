@@ -1,1 +1,139 @@
-<p>rutinas works!</p>
+<div class="container my-5">
+  <h2 class="text-center fw-bold display-5 mb-5 text-uppercase text-primary border-bottom pb-2">
+    Tipos de Rutinas
+  </h2>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+
+    <div class="col">
+      <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden">
+        <img src="Gym8.jpeg" class="card-img-top" alt="Rutina de fuerza">
+        <div class="card-body">
+          <h5 class="card-title text-center text-dark fw-bold fs-4">💪 Rutina de Fuerza</h5>
+          <ul class="card-text ps-3">
+            <li>Sentadillas, peso muerto, press de banca</li>
+            <li>Series pesadas con poco descanso</li>
+            <li>Mejora masa muscular y resistencia</li>
+          </ul>
+          <button class="btn btn-dark w-100 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#fuerzaCollapse">
+            📋 Ver rutina completa
+          </button>
+          <div class="collapse mt-3" id="fuerzaCollapse">
+            <p class="card-text">
+              <strong>Lunes:</strong> Sentadilla 5x5, Prensa 4x10, Femoral 3x12<br>
+              <strong>Miércoles:</strong> Peso muerto 5x5, Remo con barra 4x10, Espalda baja 3x15<br>
+              <strong>Viernes:</strong> Press banca 5x5, Press inclinado 4x8, Tríceps fondos 3x12
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden">
+        <img src="Gym7.jpeg" class="card-img-top" alt="Rutina quema grasa">
+        <div class="card-body">
+          <h5 class="card-title text-center text-primary fw-bold fs-4">🔥 Rutina Quema Grasa</h5>
+          <ul class="card-text ps-3">
+            <li>HIIT, bicicleta, cuerda, remo</li>
+            <li>Entrenamiento por intervalos</li>
+            <li>Ideal para pérdida de peso</li>
+          </ul>
+          <button class="btn btn-primary w-100 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#cardioCollapse">
+            📋 Ver rutina completa
+          </button>
+          <div class="collapse mt-3" id="cardioCollapse">
+            <p class="card-text">
+              <strong>Lunes:</strong> 20 min HIIT + Cuerda 4x1min<br>
+              <strong>Miércoles:</strong> Bicicleta 30 min + Abdominales<br>
+              <strong>Viernes:</strong> HIIT circuito + Caminadora 15 min
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden">
+        <img src="Gym9.jpg" class="card-img-top" alt="Rutina flexibilidad">
+        <div class="card-body">
+          <h5 class="card-title text-center text-success fw-bold fs-4">🧘 Rutina de Flexibilidad</h5>
+          <ul class="card-text ps-3">
+            <li>Yoga, estiramientos guiados</li>
+            <li>Ejercicios de movilidad articular</li>
+            <li>Mejora postura y reduce lesiones</li>
+          </ul>
+          <button class="btn btn-success w-100 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#flexibilidadCollapse">
+            📋 Ver rutina completa
+          </button>
+          <div class="collapse mt-3" id="flexibilidadCollapse">
+            <p class="card-text">
+              <strong>Lunes:</strong> Yoga Vinyasa 40 min<br>
+              <strong>Miércoles:</strong> Estiramientos dinámicos + espalda<br>
+              <strong>Viernes:</strong> Yoga + movilidad caderas y hombros
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mt-5">
+    <h2 class="text-center fw-bold mb-4">Ejercicios de la API</h2>
+
+    <div class="mb-4">
+      <input type="text" 
+             class="form-control" 
+             placeholder="Buscar ejercicio por nombre..."
+             (input)="onSearchInput($event)">
+    </div>
+
+    @if (exercises.length === 0 && !isLoading) {
+      <div class="alert alert-info">
+        No se encontraron ejercicios con ese nombre
+      </div>
+    }
+
+    <div class="text-center mb-4">
+      <button class="btn btn-dark me-2" (click)="loadExercises('strength')">Fuerza</button>
+      <button class="btn btn-primary me-2" (click)="loadExercises('cardio')">Cardio</button>
+      <button class="btn btn-success" (click)="loadExercises('stretching')">Flexibilidad</button>
+    </div>
+
+    @if (isLoading) {
+      <div class="text-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+    }
+
+    @if (error) {
+      <div class="alert alert-danger">{{ error }}</div>
+    }
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      @for (exercise of exercises; track exercise.name) {
+        <div class="col">
+          <div class="card h-100" 
+               [ngClass]="getDifficultyClass(exercise.difficulty)"
+               (click)="selectExercise(exercise)">
+            <div class="card-body">
+              <h5 class="card-title">{{ exercise.name }}</h5>
+              <p class="card-text">{{ exercise.instructions | truncate:100 }}</p>
+              <span class="badge" 
+                    [ngStyle]="{
+                      'background-color': exercise.type === 'strength' ? '#dc3545' : 
+                                        exercise.type === 'cardio' ? '#0d6efd' : '#198754',
+                      'color': 'white'
+                    }">
+                {{ exercise.type }}
+              </span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>
