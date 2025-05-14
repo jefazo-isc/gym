@@ -1,0 +1,1 @@
+import{a}from"./chunk-LZTJVRKO.js";import"./chunk-PL6UC4IM.js";import"./chunk-27PCBN2D.js";import"./chunk-Q5XXWMKT.js";import"./chunk-CWGKBZ2X.js";import"./chunk-WDXWU6O4.js";import"./chunk-LR5EE7CF.js";import"./chunk-E2VRYHBW.js";export{a as FooterComponent};
